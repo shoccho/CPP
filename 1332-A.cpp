@@ -1,10 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
+<<<<<<< HEAD
 
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
 
+=======
+ 
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> pi;
+ 
+>>>>>>> reg
 #define pi 2*acos(0.0)
 #define max3(a,b,c) max(a,max(b,c))
 #define min3(a,b,c) min(a,min(b,c))
@@ -20,7 +28,11 @@ int dist( int a,int b){
 	int mx=max(a,b);
 	return abs(mx-mn);
 }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> reg
 //reverse sort(a,a+n,greater<int>());
 //std::map<std::string, int>::iterator it = mapOfWordCount.begin();
 int main()
@@ -34,7 +46,11 @@ int main()
 	int i,j,k,l,m,n,o,p,q=0;
 	//char x[100000],y[1000000];
 	
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> reg
 	scanf("%d",&k);
 	int aa,bb,cc,dd;
 	int x,y,x1,x2,y1,y2;
@@ -43,10 +59,19 @@ int main()
 		int hori=abs(aa-bb);
 		int ver=abs(cc-dd);
 		scanf("%d %d %d %d %d %d",&x,&y,&x1,&y1,&x2,&y2);
+<<<<<<< HEAD
 		if(hori<=abs(x1-x2)  && ver <=abs(y1-y2) ){
 			if(aa!=0 && bb!=0 && dist(x1,x2)<1)printf("NO\n");
 			else if(dd!=0 && cc!=0 && dist(y1,y2)<1)printf("NO\n");
 			else printf("YES\n");
+=======
+		int xx=x;
+		int yy=y;
+		x+=-aa+bb;
+		y+=-cc+dd;
+		if (x>=x1&&x<=x2&&y>=y1&&y<=y2&&(x2>x1||aa+bb==0)&&(y2>y1||cc+dd==0)){
+			printf("YES\n");
+>>>>>>> reg
 		}
 		else printf("NO\n");
 	}

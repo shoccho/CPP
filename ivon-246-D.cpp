@@ -18,6 +18,8 @@ typedef pair<int,int> pi;
 
 //reverse sort(a,a+n,greater<int>());
 //std::map<std::string, int>::iterator it = mapOfWordCount.begin();
+int ad[100010],col[100010];
+vi g[100010];
 int main()
 {	
     
@@ -27,29 +29,37 @@ int main()
 	freopen("o.txt", "w", stdout);
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
-	char x[100000],y[1000000];
 	
-	scanf("%d",&k);
-	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+	cin>>n>>m;
+	for(i=0;i<n;i++)cin>>col[i];
+	for(i=0;i<m;i++){
+		int a,b;
+		cin>>a>>b;
+		a--;
+		b--;
+		g[a].PB(b);
+		g[b].PB(a);
 	}
 
+
+	for(i=0;i<n;i++){
+		int x=g[i].size();
+		int c =col[i];
+		set<int>st;
+		for(j=0;j<x;j++){
+			if(c!=col[g[i][j]])
+				st.insert(col[g[i][j]]);
+		}
+		ad[i]=st.size();
+	}
+	int res=*max_element(ad,ad+n);
+	int ans =1e9;
+	for(i=0;i<n;i++){
+		if(ad[i]==res){
+			ans=min(ans,col[i]);
+		}
+	}
+	cout<<ans;
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

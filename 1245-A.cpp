@@ -18,6 +18,10 @@ typedef pair<int,int> pi;
 
 //reverse sort(a,a+n,greater<int>());
 //std::map<std::string, int>::iterator it = mapOfWordCount.begin();
+int gcd(int a,int b){
+	if(b==0)return a;
+	else return(gcd(b,a%b));
+}
 int main()
 {	
     
@@ -28,26 +32,11 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+		scanf("%d %d",&m,&n);
+		if(gcd(m,n)==1)printf("Finite\n");
+		else printf("Infinite\n");
 	}
 
 #ifndef ONLINE_JUDGE

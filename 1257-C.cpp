@@ -28,28 +28,47 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+		scanf("%d",&n);
+		 map<int ,int>oc;
+		int a[n];
+		int max_count=0;
+		for(i=0;i<n;i++){
+			scanf("%d",a+i);
+			oc[a[i]]++;
+			max_count=max(max_count,oc[a[i]]);
 		}
+		int ff=0;
+		int maxi=0;
+		for(auto cc:oc){
+			if(cc.S==max_count){
+				ff++;
+				maxi=cc.F;
+			}
+			if(ff>1)break;
+		}
+		
+		if(ff>1 ||n<2 )printf("-1\n");
 		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
+			int lastpos=-1;
+			int mind=n;
+			for(i=0;i<n;i++){
+				if(a[i]==maxi){
+					if(lastpos==-1){
+						lastpos=i;
+		
+
+					}
+					else {
+						mind=min(i-lastpos,mind);
+						lastpos=i;
+					}
+				}
+			}
+			printf("%d\n",mind +1);
 		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

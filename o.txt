@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 YES
 NO
 NO
@@ -6,3 +7,13 @@ YES
 YES
 
 **Time -> 0.0001470000s
+=======
+BW
+WB
+BB
+BWB
+WBW
+BWB
+
+**Time -> 0.0000860000s
+>>>>>>> reg

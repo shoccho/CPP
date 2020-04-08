@@ -27,31 +27,47 @@ int main()
 	freopen("o.txt", "w", stdout);
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
-	char x[100000],y[1000000];
-	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
 
->>>>>>> reg
-		
+		char x[100000];
+		bool f=true;
+
+		cin>>x;
+		l=strlen(x);
+		if(l==1){
+			if(x[0]=='?')printf("a\n");
+			else printf("%s\n", x);
+			continue;
+		}
+		if(l==2 && x[0]== '?' && x[1]=='?'){
+
+			printf("ab\n");
+			continue;
+		}
+		char ss[3] ={'a','b','c'};
+		for(i=0;x[i]!='\0';i++){
+			if(x[i]==x[i+1] && x[i]!='?')f=false;
+			if(x[i]=='?'){
+				char prev;
+				char next;
+				if(i==0)	prev='d';
+				else prev=x[i-1];
+				if(i==l-1)next='e';
+				else next=x[i+1];
+				int pp=0;
+				for(j=0;j<3;j++){
+					if(ss[j]!=next && ss[j]!=prev)break;
+				}
+				x[i]=ss[j];
+			}
+		}
+
+		if(f)printf("%s\n",x);
+		else printf("-1\n");
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif
 	return 0;
-}
+} 	

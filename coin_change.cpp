@@ -18,38 +18,65 @@ typedef pair<int,int> pi;
 
 //reverse sort(a,a+n,greater<int>());
 //std::map<std::string, int>::iterator it = mapOfWordCount.begin();
+vi ans(10000,-1);
+vi s;
+int solve(int x){
+	
+	if(x<0)return maxint;
+	if(x==0) return 0;
+	if(ans[x]!=-1)return ans[x];
+	
+	int best=maxint;
+	 {
+		for(auto i :s){
+			best=min(best,solve(x-i)+1);
+		}
+	}
+	ans[x]=best;
+	return best;
+}
 int main()
 {	
     
 #ifndef ONLINE_JUDGE
 	clock_t tStart = clock();
 	freopen("i.txt", "r", stdin);
-	freopen("o.txt", "w", stdout);
+	//freopen("o.txt", "w", stdout);
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
+	//num of coins
+	scanf("%d ",&n);
 	
-	scanf("%d",&k);
-	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+	for(i=0;i<n;i++){
+		scanf("%d",&q);
+		//coins
+		s.emplace(s.end(),q);	
 	}
+	
+	//amount
+	scanf("%d",&m);
+	//recursive
+	//cout<<solve(m);
 
+
+	//iterative
+int coins[m+1];
+	ans[0]=0;
+	for(i=1;i<=m;i++){
+		ans[i]=maxint;
+		for(auto c : s){
+			if(i-c>=0 && ans[i-c]+1 < ans[i]){
+				ans[i]=(ans[i-c]+1);
+				coins[i]=c;
+			}
+		}
+	}
+	printf("%d\n",ans[m]);
+	while(m){
+		cout<<coins[m]<<" ";
+		m-=coins[m];
+	}
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

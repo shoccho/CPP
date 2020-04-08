@@ -28,28 +28,27 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
-	scanf("%d",&k);
-	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+	scanf("%d",&n);
+	int a[n];
+	map<int,std::vector<int> >s;
+	for(i=0;i<n;i++){
+		scanf("%d",a+i);
+		s[a[i]].PB(i);
 	}
-
+	sort(a,a+i,greater<int>());
+	ll res=0;
+	vi poss;
+	for(i=0;i<n;i++){
+		res+=(a[i]*i+1);
+		poss.PB(s[a[i]].back());
+		s[a[i]].pop_back();
+	}
+	printf("%lld\n",res );
+	for(i=0;i<n;i++){
+		if(i)printf(" ");
+		printf("%d",poss[i]+1);
+	}
+	
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

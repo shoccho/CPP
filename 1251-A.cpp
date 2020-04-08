@@ -27,28 +27,34 @@ int main()
 	freopen("o.txt", "w", stdout);
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
-	char x[100000],y[1000000];
-	
+	///char x[100000],y[1000000];
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+		char x[501];
+		scanf("%s",x);
+		l=strlen(x);
+		std::map<char, int> ma;
+		for(i=0;i<l;i++){
+			if(x[i]=='9')continue;
+			if(i<l-1 && x[i]==x[i+1])
+				{
+					x[i]='9';
+					x[i+1]='9';
+					i++;
+				}
+			else if(i<l-1 && x[i]!=x[i+1]){
+				ma[x[i]]=1;
+			}
+			else if(i==l-1){
+				if(x[i]!=x[i-1])ma[x[i]]=1;
+			}
 		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
+		for(auto c :ma){
+			printf("%c", c.F);
 		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+		printf("\n");
 	}
+
 
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);

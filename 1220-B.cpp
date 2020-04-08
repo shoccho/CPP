@@ -26,30 +26,37 @@ int main()
 	freopen("i.txt", "r", stdin);
 	freopen("o.txt", "w", stdout);
 #endif
-	int i,j,k,l,m,n,o,p,q=0;
+	ll i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
+	cin>>m;
 	
-	scanf("%d",&k);
-	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
 
->>>>>>> reg
-		
+	ll a[m][m];
+	for(i=0;i<m;i++){
+		for(j=0;j<m;j++){
+			scanf("%lld",&a[i][j]);
+			//printf("%lld ", a[i][j]);
+		}
+		//printf("\n");
 	}
+	
+	for(i=0;i<m;i++){
+	//	printf("%d\n",a[i][i] );
+	 	if(i)printf(" ");
+	 	//printf("%d %d %d\n", a[i][i+1],a[i][i+2],a[i+1][i+2]);
+	 	if(i<m-2){
+	 		//printf("f");
+	 		a[i][i]=floor(sqrt((a[i][i+2]* a[i][i+1])/a[i+1][i+2] ));
+	 		if(i)printf(" ");
+	 		printf("%lld",a[i][i] );
+	 	}
+	 	else{
+	 		//printf("s");
+	 		a[i][i]=floor(sqrt((a[i][i-1]/a[i-1][i-1] )*(a[i-1][i])/a[i-1][i-1] ));
+	 		printf(" %lld",a[i][i] );
 
+	 	}
+	}
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

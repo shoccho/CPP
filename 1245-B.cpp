@@ -28,28 +28,62 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
+		cin>>n;
+		int ar,ap,as;
+		int br=0,bp=0,bs=0;
+		scanf("%d%d%d",&ar,&ap,&as);
+		int arc=ar;
+		int apc=ap;
+		int asc=as;
+		char xx[n+1];
+		scanf("%s",xx);
+		for(i=0;i<n;i++){
+			if(xx[i]=='R')br++;
+			else if(xx[i]=='S')bs++;
+			else bp++;
+		}		
+		int ww=min(bp,as)+min(bs,ar)+min(br,ap);
+		if(2*ww<n)printf("NO\n");
 		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
+			printf("YES\n");
+			char ss[n+1];
+			for(i=0;i<n;i++){
+				if(xx[i]=='P' && as){
+					ss[i]='S';
+					as--;
+				}
+				else if(xx[i]=='S' && ar){
+					ss[i]='R';
+					ar--;
+				}
+				else if(xx[i]=='R' && ap){
+					ss[i]='P';
+					ap--;
+				}
+				else ss[i]='_';
+			}
+			for(i=0;i<n;i++){
+				if(ss[i]=='_'){
+					if(ar){
+						ss[i]='R';
+						ar--;
+					}
+					else if(ap){
+						ss[i]='P';
+						ap--;
+					}
+					else if(as){
+						ss[i]='S';
+						as--;
+					}
+				}
+				printf("%c",ss[i]);
+			}
+			printf("\n");
 		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

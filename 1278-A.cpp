@@ -27,31 +27,42 @@ int main()
 	freopen("o.txt", "w", stdout);
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
-	char x[100000],y[1000000];
 	
+
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+		char x[100000],y[1000000];
+		cin>>x;
+		cin>>y;
+		l=strlen(x);
+		//sort(x,x+l);
+		int l2=strlen(y);
+		bool ff=false;
+		if(l>l2){
+			printf("No\n");
+			continue;
 		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
+		for(i=0;i<=l2-l;i++){
+			int pa=0;
+			map<char,int>xx;
+			for(j=i;j<i+l;j++){
+				xx[y[j]]++;
+			}
+			for(j=0;j<l;j++){
 
->>>>>>> reg
-		
+				xx[x[j]]--;
+			}
+			ff=true;
+			for(auto cc: xx){
+				if(cc.S>=1)ff=false;
+			}
+			if(ff)break;
+		}
+		if(ff)printf("Yes\n");
+		else printf("No\n");
 	}
-
-#ifndef ONLINE_JUDGE
-    printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
-#endif
+	#ifndef ONLINE_JUDGE
+    	printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
+	#endif
 	return 0;
 }

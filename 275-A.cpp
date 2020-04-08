@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+ 	 	#include<bits/stdc++.h>
 using namespace std;
 
 typedef long long ll;
@@ -28,28 +28,34 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
-	scanf("%d",&k);
-	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+	int b[5][5];
+	for(i=1;i<=3;i++){
+		for(j=1;j<=3;j++){
+		b[i][j]=1;
 		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
 	}
+	for(i=1;i<=3;i++){
+		for(j=1;j<=3;j++){
+			scanf("%d",&q);
+			if(q%2==1){
 
+				b[i][j]*=-1;
+				b[i][j+1]*=-1;
+				b[i][j-1]*=-1;
+				b[i-1][j]*=-1;
+				b[i+1][j]*=-1;
+				
+				
+			}
+		}
+	}
+	for(i=1;i<=3;i++){
+		for(j=1;j<=3;j++){
+			if(b[i][j]==1)printf("1");
+		else printf("0");
+		}
+		printf("\n");
+	}
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

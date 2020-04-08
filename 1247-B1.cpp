@@ -32,24 +32,27 @@ int main()
 	scanf("%d",&k);
 	while(k--){
 		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+		int a[m];
+		for(i=0;i<m;i++){
+			scanf("%d",a+i);
 		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
+		int min_uq=o;
+		for(i=0;i+o<=m;i++){
+			
+			unordered_set<int>ss;
+			int uq=0;
+			for(j=i;j<i+o;j++){
+				if(ss.count(a[j])==1)continue;
+				else {
+					uq++;
+					ss.insert(a[j]);
+				}
+				
+			}
+			min_uq=min(uq,min_uq);
 		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+		printf("%d\n",min_uq);
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

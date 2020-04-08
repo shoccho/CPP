@@ -18,6 +18,10 @@ typedef pair<int,int> pi;
 
 //reverse sort(a,a+n,greater<int>());
 //std::map<std::string, int>::iterator it = mapOfWordCount.begin();
+int a[5][5];
+
+int maxres=0;
+
 int main()
 {	
     
@@ -28,27 +32,29 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
-	scanf("%d",&k);
-	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+	n=5;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			scanf("%d",&a[i][j]);
 		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
 	}
+
+vector<int> permutation;
+for (int i = 0; i < n; i++) {
+permutation.push_back(i);
+}
+do {
+	int res=0;
+	for(i=0;i<5;i++){
+		res+=a[permutation[i]][permutation[i+1]];
+		res+=a[permutation[i+1]][permutation[i]];
+	}
+	maxres=max(res,maxres);
+
+} while (next_permutation(permutation.begin(),permutation.end()));
+
+
+printf("%d\n", maxres);
 
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);

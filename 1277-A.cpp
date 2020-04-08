@@ -18,6 +18,19 @@ typedef pair<int,int> pi;
 
 //reverse sort(a,a+n,greater<int>());
 //std::map<std::string, int>::iterator it = mapOfWordCount.begin();
+bool isb(ll a){
+	unordered_multiset<int>d;
+	while(a){
+		
+		int dd=a%10;
+		if(d.count(dd)!=d.size() ){
+			return false;
+		}
+		d.insert(dd);
+		a/=10;
+	}
+	return true;
+}
 int main()
 {	
     
@@ -28,28 +41,18 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+		cin >> n;
+		int b = 0, ans = 0;
+		for (int len = 1; len <= 9; len++) {
+   			b = b * 10 + 1;            
+    		for (int m = 1; m <= 9; m++)
+        	if (b * m <= n)
+        	    ans++;
 		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+		cout << ans << endl;
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

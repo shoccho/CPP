@@ -28,26 +28,23 @@ int main()
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
+		ll s=0;
+		scanf("%s",x);
+		l=strlen(x);
+		int evc=0;
+		int z=0;
+		for(i=0;i<l;i++){
+			s+=x[i]-'0';
+			if(x[i]=='0')z++;
+			if((x[i]-'0')%2==0)evc++;
 
->>>>>>> reg
-		
+		}
+		if(s%3==0 && z>=1 && evc>=2)printf("red\n");
+		else printf("cyan\n");
+
+
 	}
 
 #ifndef ONLINE_JUDGE

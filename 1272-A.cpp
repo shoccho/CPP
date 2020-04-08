@@ -26,30 +26,37 @@ int main()
 	freopen("i.txt", "r", stdin);
 	freopen("o.txt", "w", stdout);
 #endif
-	int i,j,k,l,m,n,o,p,q=0;
+	ll  i,j,k,l,m,n,o,p,q=0;
 	char x[100000],y[1000000];
-	
-	scanf("%d",&k);
+	scanf("%lld",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
+		scanf("%lld %lld %lld",&m,&n,&o);
+		p=m;
+		q=n;
+		 ll r=o;
+		double avg=m+n+o;
+		avg/=3;
+		if(m<avg)m++;
+		else if(m>avg)m--;
+		if(n<avg)n++;
+		else if(n>avg)n--;
+		if(o<avg)o++;
+		else if(o>avg)o--;
+	 	ll mini=abs(m-n)+abs(m-o)+abs(n-o) ;
+	 	ll av=p+q+r;
+	 	av/=3;
+	 	if(p<av)p++;
+	 	else if(p>av)p--;
 
->>>>>>> reg
-		
+	 	if(q<av)q++;
+	 	else if(q>av)q--;
+
+	 	if(r<av)r++;
+	 	else if(r>av)r--;
+
+	 	ll minf=abs(p-q)+abs(p-r)+abs(q-r) ;
+		printf("%lld\n",min(minf,mini));
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

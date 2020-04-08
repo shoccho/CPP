@@ -27,29 +27,31 @@ int main()
 	freopen("o.txt", "w", stdout);
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
-	char x[100000],y[1000000];
-	
+	//char x[100000],y[1000000];
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
+		scanf("%d",&n);
+		char x[n+1],y[n+1];
+		scanf("%s",x);
+		scanf("%s",y);
+		int change=0;
 
->>>>>>> reg
-		
+		for(i=0;i<n;i++){
+			 if(x[i]!=y[i]){
+                char s = x[i];
+                char t = y[i];
+                for( j=i+1; j<n; j++){
+                    if(x[j] == s && y[j] == t){
+                        swap(x[j], y[i]);
+                        break;
+                    }
+                }
+                break;
+            }
+		}
+		if(strcmp(x,y)==0)printf("Yes\n");
+		else printf("No\n");
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

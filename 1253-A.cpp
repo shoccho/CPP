@@ -31,25 +31,35 @@ int main()
 	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+
+		scanf("%d",&n);
+		int a[n],b[n];
+		for(i=0;i<n;i++){
+			scanf("%d",a+i);
 		}
+		int diff[n+3];
+		bool dn=false;
+		for(i=0;i<n;i++){
+			scanf("%d",b+i);
+			diff[i+1]=b[i]-a[i];
+			if(diff[i+1]<0)dn=true;
+		}
+		if(dn)printf("No\n");
 		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
+			diff[0]=0;
+			diff[n+1]=0;
+			int dd=0;
+			for(i=0;i<=n;i++){
+				if(diff[i]!=diff[i+1]){
+					dd++;
+				}
+			}
+			if(dd<=2)printf("Yes\n");
+			else printf("No\n");
+
+
 		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
 	}
-
 #ifndef ONLINE_JUDGE
     printf("\n**Time -> %.10fs\n", (double)(clock()-tStart) / CLOCKS_PER_SEC);
 #endif

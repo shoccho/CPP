@@ -32,22 +32,19 @@ int main()
 	scanf("%d",&k);
 	while(k--){
 		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
-		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
+		int count=0;
 		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+		while(o>=2 && n>=1){
+			count+=3;
+			o-=2;
+			n-=1;
+		}
+		while(m>=1 && n>=2)
+			{	m-=1;
+				n-=2;
+				count+=3;
+			}
+		printf("%d\n",count );
 	}
 
 #ifndef ONLINE_JUDGE

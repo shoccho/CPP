@@ -19,7 +19,11 @@ int main()
 	char x[200000],y[1000000];
 	scanf("%d %d",&m,&n);
 	cin>>x;
+<<<<<<< HEAD
 	if (strlen(x)==n)printf("0\n");
+=======
+	if (strlen(x)==n && n==1)printf("0\n");
+>>>>>>> reg
 	else {
 	for(i=0;i<m;i++){
 		if(n){

@@ -27,27 +27,21 @@ int main()
 	freopen("o.txt", "w", stdout);
 #endif
 	int i,j,k,l,m,n,o,p,q=0;
-	char x[100000],y[1000000];
-	
 	scanf("%d",&k);
 	while(k--){
-		scanf("%d %d %d",&m,&n,&o);
-<<<<<<< HEAD
-		int poss=0;
-		if(m<=n){
-			o-=n-m;
-			//o--;
+		char x[999999];
+		scanf("%s",x);
+		vi ind;
+		l=strlen(x);
+		for(i=0;i<l;i++){
+			if(x[i]=='o'){
+				if(i>1 && x[i-2]=='t' &&  x[i-1]=='w')ind.PB(i+1);
+				else if(i<l-2 &&  x[i+1]=='n' && x[i+2]=='e')ind.PB(i+1);
+			}
 		}
-		else {
-			printf("%d\n",(o-(m-n)  )  +1 );	
-		}
-		
-=======
-		int minadd=max(0,(o+n-m+2)/2);
-		printf("%d\n",max(0,o-minadd+1) );
-
->>>>>>> reg
-		
+		cout<<ind.size()<<endl;
+		for(auto c: ind)printf("%d ",c );
+		printf("\n");
 	}
 
 #ifndef ONLINE_JUDGE
